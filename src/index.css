@@ -36,3 +36,14 @@
     -moz-appearance: textfield;
     /* hides spinner */
 }
+
+.styled-select select {
+    /*Removes border*/
+    -webkit-appearance: none;
+    /*Removes default chrome and safari style*/
+    -moz-appearance: none;
+    /*Removes default style Firefox*/
+    background: url('select_icon.png') no-repeat;
+    background-position: 179px 7px;
+    text-indent: 0.01px;
+}
