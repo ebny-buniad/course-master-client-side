@@ -13,7 +13,7 @@ const Navbar = () => {
     </>
     return (
         <div
-            className='backdrop-blur-sm shadow-sm fixed w-full z-50'>
+            className='bg-white shadow-sm fixed w-full z-50'>
             <Container>
                 <div className="navbar py-3">
                     <div className="navbar-start">
