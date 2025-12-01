@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+    --font-display: "Inter", sans-serif;
+    /* --color-primary: #00A7F3; */
+    --font-size: 16px
+}
+
+@layer base {
+    html {
+        font-family: var(--font-display);
+        font-size: var(--font-size);
+    }
+}
+
+/* Remove arrows for inputs with class 'no-arrow' */
+
+/* Chrome, Safari, Edge, Opera */
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove on focus as well */
+.no-arrow:focus::-webkit-outer-spin-button,
+.no-arrow:focus::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.no-arrow {
+    -moz-appearance: textfield;
+    /* hides spinner */
+}
