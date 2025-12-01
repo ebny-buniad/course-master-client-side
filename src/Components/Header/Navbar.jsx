@@ -1,10 +1,11 @@
 import React from 'react';
 import Container from '../Container/Container';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import Logo from '../Logo/Logo';
 import { FaBell, FaHeart } from 'react-icons/fa6';
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const links = <>
         <li><NavLink to='/'>Courses</NavLink></li>
         <li><NavLink to='/'>Categories</NavLink></li>
@@ -23,9 +24,17 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex="-1"
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                className="menu menu-sm dropdown-content bg-base-100 
+                                rounded-box z-1 mt-3 w-52 p-2 shadow">
                                 {links}
+
+                                <div className='flex flex-col border-t border-gray-200 pt-2 mt-5 space-y-2'>
+                                    <Link to='' className='text-[16px] font-bold text-violet-500'>Log In</Link>
+                                    <button onClick={() => navigate('/auth/signUp')}
+                                     className="btn rounded-lg text-white bg-linear-to-r from-indigo-500 to-violet-500">Sign Up</button>
+                                </div>
                             </ul>
+
                         </div>
                         <Logo></Logo>
                     </div>
@@ -34,11 +43,12 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="navbar-end gap-5">
+                    <div className="navbar-end md:gap-5 gap-3">
                         <FaBell className='text-gray-600 hover:cursor-pointer hover:text-violet-500' size={20} />
                         <FaHeart className='text-gray-600 hover:cursor-pointer hover:text-violet-500' size={20} />
-                        <Link to='' className='text-[16px] font-bold text-violet-500'>Log In</Link>
-                        <button className="btn rounded-lg text-white text-[16px] p-6 bg-linear-to-r from-indigo-500 to-violet-500">Sign Up</button>
+                        <Link to='' className='text-[16px] font-bold text-violet-500 hidden lg:flex'>Log In</Link>
+                        <button onClick={() => navigate('/auth/signUp')}
+                            className="btn rounded-lg text-white text-[16px] p-6 bg-linear-to-r from-indigo-500 to-violet-500 hidden lg:flex">Sign Up</button>
                     </div>
                 </div>
             </Container>
