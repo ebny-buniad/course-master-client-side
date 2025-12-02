@@ -3,9 +3,16 @@ import { useForm } from "react-hook-form";
 import { BiLock, BiUser } from "react-icons/bi";
 import { CiMail } from "react-icons/ci";
 import { FaPhoneAlt, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import useAuth from "../../hook/useAuth";
+import useAxiosInstance from "../../hook/useAxiosInstance";
+import { Link, useNavigate } from "react-router";
 
 const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [fbError, setFbError] = useState(false);
+    const { createUser } = useAuth();
+    const axiosInstance = useAxiosInstance();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -13,8 +20,29 @@ const SignUp = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log("Signup Data:", data);
-        // Call API here
+        const { name, email, phone, password } = data;
+        const userInfo = {
+            name,
+            email,
+            phone,
+            role: 'student',
+            createdAt: new Date().toISOString()
+        }
+
+        createUser(email, password)
+            .then(async () => {
+                // Send user in DB
+                const res = await axiosInstance.post('/api/users', userInfo);
+                console.log(res)
+                if (res.data.data.insertedId) {
+                    navigate('/')
+                }
+            })
+            .catch((error) => {
+                if (error.code === "auth/email-already-in-use") {
+                    setFbError(true);
+                }
+            });
     };
 
     return (
@@ -119,12 +147,12 @@ const SignUp = () => {
                         Create Account
                     </button>
                 </form>
-
+                {fbError && <p className='text-xs text-red-400'>This email alredy registred</p>}
                 <p className="text-center text-gray-600 mt-4">
                     Already have an account?
-                    <a href="/login" className="text-purple-600 font-semibold ml-1">
+                    <Link to='/auth/login' className="text-purple-600 font-semibold ml-1">
                         Log In
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

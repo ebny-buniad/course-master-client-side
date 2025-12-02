@@ -3,6 +3,7 @@ import MainLayouts from "../layouts/MainLayouts";
 import LandingPage from "../pages/LandingPage/LandingPage";
 import AuthLayouts from "../layouts/AuthLayouts";
 import SignUp from "../pages/SignUp/SignUp";
+import Login from "../pages/Login/Login";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
             {
                 path: 'signUp',
                 Component: SignUp
+            },
+            {
+                path: 'login',
+                Component: Login
             }
         ]
     }
