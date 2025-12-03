@@ -8,7 +8,6 @@ const LandingPage = () => {
         <div>
             <Hero></Hero>
             <Courses></Courses>
-            <Footer></Footer>
         </div>
     );
 };

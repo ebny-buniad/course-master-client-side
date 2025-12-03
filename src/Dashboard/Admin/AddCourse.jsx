@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAxiosInstance from "../../hook/useAxiosInstance";
 import toast from "react-hot-toast";
+import { categories } from "../../utils/categories"
+console.log(categories)
 
 const AddCourse = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -43,7 +45,7 @@ const AddCourse = () => {
                     {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
                 </div>
 
-                {/* Course Description (Full Width) */}
+                {/* Course Description */}
                 <div className="md:col-span-2">
                     <label className="block font-medium mb-1">Course Description</label>
                     <textarea
@@ -62,10 +64,9 @@ const AddCourse = () => {
                         className="select select-bordered w-full"
                     >
                         <option value="">Select Category</option>
-                        <option value="Programming">Programming</option>
-                        <option value="Design">Design</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Business">Business</option>
+                        {categories.map((category) => (
+                            <option value={category}>{category}</option>
+                        ))}
                     </select>
                     {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>}
                 </div>
@@ -150,6 +151,17 @@ const AddCourse = () => {
                         <option value="High">High</option>
                     </select>
                     {errors.priceRange && <p className="text-red-500 text-sm mt-1">{errors.priceRange.message}</p>}
+                </div>
+
+                {/* Course Syllabus */}
+                <div className="md:col-span-2">
+                    <label className="block font-medium mb-1">Course Syllabus</label>
+                    <textarea
+                        placeholder="Enter course Syllabus list"
+                        {...register("syllabus", { required: "Syllabus is required" })}
+                        className="textarea textarea-bordered w-full"
+                    />
+                    {errors.syllabus && <p className="text-red-500 text-sm mt-1">{errors.syllabus.message}</p>}
                 </div>
 
                 {/* Submit Button (Full Width) */}

@@ -6,10 +6,13 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import AdminLayouts from "../layouts/AdminLayouts";
 import AdminLogin from "../Dashboard/Admin/AdminLogin";
-import AdminDashboard from "../Dashboard/Admin/AdminDashboard";
 import CourseManagement from "../Dashboard/Admin/CourseManagement";
 import AddCourse from "../Dashboard/Admin/AddCourse";
 import UpdateCourse from "../Dashboard/Admin/UpdateCourse";
+import CourseDetails from "../pages/Courses/CourseDetails";
+import CoursePayment from "../pages/Courses/CoursePayment";
+import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
+import WatchClass from "../pages/StudentDashboard/WatchClass";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +21,22 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true, Component: LandingPage
+            },
+            {
+                path: 'course-details/:id',
+                Component: CourseDetails
+            },
+            {
+                path: 'course-payment/:id',
+                Component: CoursePayment
+            },
+            {
+                path: 'student-dashboard',
+                Component: StudentDashboard
+            },
+            {
+                path: 'watch-class/:id',
+                Component: WatchClass
             }
         ]
     },

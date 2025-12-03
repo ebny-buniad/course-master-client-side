@@ -88,7 +88,7 @@ const Navbar = () => {
                                             <span className="badge">New</span>
                                         </a>
                                     </li>
-                                    <li><Link to='/'>Dashboard</Link></li>
+                                    <li><Link to='/student-dashboard'>Dashboard</Link></li>
                                     <li><Link to='/'>Course</Link></li>
                                     <li><Link to='/'>Assignments & Quizzes</Link></li>
                                     <li className='border-t border-gray-200 mt-3 pt-2'><button onClick={() => { handelLogOut() }}
